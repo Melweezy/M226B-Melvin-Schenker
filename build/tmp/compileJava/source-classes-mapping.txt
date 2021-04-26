@@ -1,0 +1,7 @@
+AB02/AB02.java
+ AB02.AB02
+ AB02.Chef
+ AB02.Fachangestellter
+ AB02.Firma
+ AB02.Lernende
+ AB02.Person
