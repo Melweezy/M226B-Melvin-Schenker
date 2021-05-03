@@ -1,12 +1,15 @@
 package grafikeditor_0;
 
 import grafikeditor_0.figuren.Figur;
+import grafikeditor_0.figuren.Kreis;
+import grafikeditor_0.figuren.Linie;
 import grafikeditor_0.figuren.Rechteck;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Die Klasse Display stellt ein Fenster auf dem Bildschirm zur Verf�gung, in welchem
@@ -56,14 +59,34 @@ public class Display extends JFrame {
    * @param g Referenz auf das Graphics-Objekt zum zeichnen.
    */
   private void zeichneFiguren(Graphics g) {
+    Graphics2D g2 = (Graphics2D) g;
+
     for (Figur f : figuren) {
       if (f instanceof Rechteck) {
         Rechteck r = (Rechteck)f;
+        g.setColor(Color.MAGENTA);
+        g.fillRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
+        g2.setStroke(new BasicStroke(10));
+        g.setColor(Color.BLACK);
         g.drawRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
       }
       /* TODO: Hier muss für jede weitere Figur-Klasse, welche dargestellt werden k�nnen muss,
        * ein analoger Abschnitt, wie für die Rechteck-Klasse folgen.
        */
+      if (f instanceof Linie) {
+        Linie l = (Linie)f;
+        g2.setStroke(new BasicStroke(50,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
+        g.drawLine(l.getX(), l.getY(), l.getendX(),l.getendY());
+        g2.setStroke(new BasicStroke());
+      }
+      if (f instanceof Kreis) {
+        g2.setStroke(new BasicStroke(10));
+        Kreis k = (Kreis) f;
+        g.setColor(Color.BLUE);
+        g.drawOval( k.getX() - k.getradius()/2, k.getY() - k.getradius()/2, k.getradius(), k.getradius());
+        g.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke());
+      }
     }
   }
 
