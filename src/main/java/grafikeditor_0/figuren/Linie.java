@@ -26,4 +26,9 @@ public class Linie extends Figur {
     public void setendY(int endY) {
         this.endY = endY;
     }
+
+    public void move(int deltaX, int deltaY) {
+        x = x + deltaX;
+        y = y + deltaY;
+    }
 }

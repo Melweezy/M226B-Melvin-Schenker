@@ -97,5 +97,6 @@ public class Display extends JFrame {
   public void hinzufuegen(Figur figur) {
     figuren.add(figur);
     repaint();
+
   }
 }

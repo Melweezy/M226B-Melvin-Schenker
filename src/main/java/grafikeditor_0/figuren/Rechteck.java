@@ -34,5 +34,8 @@ public class Rechteck extends Figur {
 		this.hoehe = hoehe;
 	}
 
-
+	public void move(int deltaX, int deltaY) {
+		x = x + deltaX;
+		y = y + deltaY;
+	}
 }

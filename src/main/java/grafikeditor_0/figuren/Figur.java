@@ -7,8 +7,10 @@ public abstract class Figur {
 	public Figur (int x, int y) {
 		this.x = x;
 		this.y = y;
+
 	}
-	
+	public abstract void move(int deltaX, int deltaY);
+
 	public int getX() {
 		return x;
 	}
@@ -16,5 +18,4 @@ public abstract class Figur {
 	public int getY() {
 		return y;
 	}
-
 }

@@ -15,4 +15,8 @@ public class Kreis extends Figur {
         return this.radius = radius;
     }
 
+    public void move(int deltaX, int deltaY) {
+        x = x + deltaX;
+        y = y + deltaY;
+    }
 }

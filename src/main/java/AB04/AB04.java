@@ -3,8 +3,12 @@ package AB04;
 class Main{
     public static void main(String[] args) {
         Buch b1 = new Buch();
-        b1.sample = "hallo";
+        b1.sample = "book1";
         b1.zeigen();
+
+        Game g1 = new Game();
+        g1.sample = "game1";
+        g1.zeigen();
     }
 }
 
@@ -37,6 +41,13 @@ class DVD extends Medium {
     public void zeigen(){
         Player p = new Player();
         p.playVideo(sample);
+    }
+}
+
+class Game extends Medium {
+    String sample;
+    public void zeigen(){
+        System.out.println(sample);
     }
 }
 
