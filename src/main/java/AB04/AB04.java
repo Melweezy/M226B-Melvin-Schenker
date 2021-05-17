@@ -1,44 +1,45 @@
 package AB04;
 
-class Main{
+class Bibliothek {
+    private Medium[] katalog;
+
     public static void main(String[] args) {
         Buch b1 = new Buch();
         b1.sample = "book1";
-        b1.zeigen();
+        b1.showSample();
 
         Game g1 = new Game();
         g1.sample = "game1";
-        g1.zeigen();
-    }
-}
-
-class Bibliothek {
-    private Medium[] katalog;
-    public void showSample(Medium m) {
-        m.zeigen();
+        g1.showSample();
     }
 }
 abstract class Medium {
-    public abstract void zeigen();
+    public abstract void showSample();
 }
 
 class Buch extends Medium {
     String sample;
-    public void zeigen(){
+
+    @Override
+    public void showSample() {
         System.out.println(sample);
     }
 }
 
 class CD extends Medium {
     Sound sample;
-    public void zeigen(){
+
+    @Override
+    public void showSample(){
         Player p = new Player();
         p.playSound(sample);
     }
 }
 class DVD extends Medium {
     Video sample;
-    public void zeigen(){
+
+    @Override
+    public void showSample(){
         Player p = new Player();
         p.playVideo(sample);
     }
@@ -46,12 +47,14 @@ class DVD extends Medium {
 
 class Game extends Medium {
     String sample;
-    public void zeigen(){
+
+    @Override
+    public void showSample(){
         System.out.println(sample);
     }
 }
 
-class Sound {}
+class Sound extends Player {}
 
 class Video {}
 

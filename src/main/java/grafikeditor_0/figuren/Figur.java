@@ -1,5 +1,7 @@
 package grafikeditor_0.figuren;
 
+import java.awt.*;
+
 public abstract class Figur {
 	protected int x;
 	protected int y;
@@ -9,7 +11,12 @@ public abstract class Figur {
 		this.y = y;
 
 	}
-	public abstract void move(int deltaX, int deltaY);
+	public void move(int deltaX, int deltaY){
+		this.x += deltaX;
+		this.y += deltaY;
+	}
+
+	public abstract void zeichnen(Graphics g);
 
 	public int getX() {
 		return x;

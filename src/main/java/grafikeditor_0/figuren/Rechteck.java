@@ -34,8 +34,14 @@ public class Rechteck extends Figur {
 		this.hoehe = hoehe;
 	}
 
+	@Override
 	public void move(int deltaX, int deltaY) {
 		x = x + deltaX;
 		y = y + deltaY;
+	}
+
+	@Override
+	public void zeichnen(Graphics g){
+		g.drawRect(getX(), getY(), breite, hoehe);
 	}
 }

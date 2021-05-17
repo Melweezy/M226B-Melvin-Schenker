@@ -22,6 +22,7 @@ import java.util.List;
 public class Display extends JFrame {
   /** Die Liste der dargestellten Figur-Objekte */
   private List<Figur> figuren = new ArrayList<Figur>();
+  Zeichnung zeichnung;
 
   /**
    * Konstruktor. Initialisiert das Fenster in der Mitte des Bildschirms und erzeugt ein
@@ -54,41 +55,47 @@ public class Display extends JFrame {
     });
   }
 
+  public void zeichneFiguren(Graphics g){
+    for (Figur f : figuren) {
+      f.zeichnen(g);
+    }
+  }
+
   /**
    * Zeichnet alle Figuren.
    * @param g Referenz auf das Graphics-Objekt zum zeichnen.
    */
-  private void zeichneFiguren(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g;
-
-    for (Figur f : figuren) {
-      if (f instanceof Rechteck) {
-        Rechteck r = (Rechteck)f;
-        g.setColor(Color.MAGENTA);
-        g.fillRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
-        g2.setStroke(new BasicStroke(10));
-        g.setColor(Color.BLACK);
-        g.drawRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
-      }
-      /* TODO: Hier muss für jede weitere Figur-Klasse, welche dargestellt werden k�nnen muss,
-       * ein analoger Abschnitt, wie für die Rechteck-Klasse folgen.
-       */
-      if (f instanceof Linie) {
-        Linie l = (Linie)f;
-        g2.setStroke(new BasicStroke(50,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
-        g.drawLine(l.getX(), l.getY(), l.getendX(),l.getendY());
-        g2.setStroke(new BasicStroke());
-      }
-      if (f instanceof Kreis) {
-        g2.setStroke(new BasicStroke(10));
-        Kreis k = (Kreis) f;
-        g.setColor(Color.BLUE);
-        g.drawOval( k.getX() - k.getradius()/2, k.getY() - k.getradius()/2, k.getradius(), k.getradius());
-        g.setColor(Color.BLACK);
-        g2.setStroke(new BasicStroke());
-      }
-    }
-  }
+//  private void zeichneFiguren(Graphics g) {
+//    Graphics2D g2 = (Graphics2D) g;
+//
+//    for (Figur f : figuren) {
+//      if (f instanceof Rechteck) {
+//        Rechteck r = (Rechteck)f;
+//        g.setColor(Color.MAGENTA);
+//        g.fillRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
+//        g2.setStroke(new BasicStroke(10));
+//        g.setColor(Color.BLACK);
+//        g.drawRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
+//      }
+//      /* TODO: Hier muss für jede weitere Figur-Klasse, welche dargestellt werden k�nnen muss,
+//       * ein analoger Abschnitt, wie für die Rechteck-Klasse folgen.
+//       */
+//      if (f instanceof Linie) {
+//        Linie l = (Linie)f;
+//        g2.setStroke(new BasicStroke(50,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
+//        g.drawLine(l.getX(), l.getY(), l.getendX(),l.getendY());
+//        g2.setStroke(new BasicStroke());
+//      }
+//      if (f instanceof Kreis) {
+//        g2.setStroke(new BasicStroke(10));
+//        Kreis k = (Kreis) f;
+//        g.setColor(Color.BLUE);
+//        g.drawOval( k.getX() - k.getradius()/2, k.getY() - k.getradius()/2, k.getradius(), k.getradius());
+//        g.setColor(Color.BLACK);
+//        g2.setStroke(new BasicStroke());
+//      }
+//    }
+//  }
 
   /**
    * F�gt eine weitere Figur hinzu und l�st die Auffrischung des Fensterinhaltes aus.
@@ -97,6 +104,10 @@ public class Display extends JFrame {
   public void hinzufuegen(Figur figur) {
     figuren.add(figur);
     repaint();
+  }
 
+  public void setZeichnung(Zeichnung zeichnung){
+    this.zeichnung = zeichnung;
+    repaint();
   }
 }
