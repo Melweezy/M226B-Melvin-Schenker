@@ -1,27 +1,24 @@
 package grafikeditor_0;
+import grafikeditor_0.Zeichnung;
 
-import grafikeditor_0.figuren.Figur;
-import grafikeditor_0.figuren.Kreis;
-import grafikeditor_0.figuren.Linie;
-import grafikeditor_0.figuren.Rechteck;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
-
-
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
- * Die Klasse Display stellt ein Fenster auf dem Bildschirm zur Verf�gung, in welchem
- * Figur-Objekte dargestellt werden k�nnen.
+ * Die Klasse Display stellt ein Fenster auf dem Bildschirm zur Verfügung, in welchem
+ * Figur-Objekte dargestellt werden können.
  * Siehe auch Java-Grundkurs Abschnitt 10.2 und 10.3.
- * 
+ *
  * @author Andres Scheidegger
  */
 @SuppressWarnings("serial")
 public class Display extends JFrame {
   /** Die Liste der dargestellten Figur-Objekte */
-  private List<Figur> figuren = new ArrayList<Figur>();
   Zeichnung zeichnung;
 
   /**
@@ -40,7 +37,6 @@ public class Display extends JFrame {
     createAndAddDrawingPanel();
     setVisible(true);
   }
-
   private void createAndAddDrawingPanel() {
     // Das JPanel-Objekt ist ein Objekt einer anonymen Unterklasse von JPanel
     // Siehe Java-Grundkurs Abschnitt 3.9
@@ -50,62 +46,10 @@ public class Display extends JFrame {
       @Override
       protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        zeichneFiguren(g);
+        zeichnung.zeichneFiguren(zeichnung.getFiguren(),g);
       }
     });
   }
-
-  public void zeichneFiguren(Graphics g){
-    for (Figur f : figuren) {
-      f.zeichnen(g);
-    }
-  }
-
-  /**
-   * Zeichnet alle Figuren.
-   * @param g Referenz auf das Graphics-Objekt zum zeichnen.
-   */
-//  private void zeichneFiguren(Graphics g) {
-//    Graphics2D g2 = (Graphics2D) g;
-//
-//    for (Figur f : figuren) {
-//      if (f instanceof Rechteck) {
-//        Rechteck r = (Rechteck)f;
-//        g.setColor(Color.MAGENTA);
-//        g.fillRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
-//        g2.setStroke(new BasicStroke(10));
-//        g.setColor(Color.BLACK);
-//        g.drawRect(r.getX(), r.getY(), r.getBreite(), r.getHoehe());
-//      }
-//      /* TODO: Hier muss für jede weitere Figur-Klasse, welche dargestellt werden k�nnen muss,
-//       * ein analoger Abschnitt, wie für die Rechteck-Klasse folgen.
-//       */
-//      if (f instanceof Linie) {
-//        Linie l = (Linie)f;
-//        g2.setStroke(new BasicStroke(50,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND));
-//        g.drawLine(l.getX(), l.getY(), l.getendX(),l.getendY());
-//        g2.setStroke(new BasicStroke());
-//      }
-//      if (f instanceof Kreis) {
-//        g2.setStroke(new BasicStroke(10));
-//        Kreis k = (Kreis) f;
-//        g.setColor(Color.BLUE);
-//        g.drawOval( k.getX() - k.getradius()/2, k.getY() - k.getradius()/2, k.getradius(), k.getradius());
-//        g.setColor(Color.BLACK);
-//        g2.setStroke(new BasicStroke());
-//      }
-//    }
-//  }
-
-  /**
-   * F�gt eine weitere Figur hinzu und l�st die Auffrischung des Fensterinhaltes aus.
-   * @param figur Referenz auf das weitere Figur-Objekt.
-   */
-  public void hinzufuegen(Figur figur) {
-    figuren.add(figur);
-    repaint();
-  }
-
   public void setZeichnung(Zeichnung zeichnung){
     this.zeichnung = zeichnung;
     repaint();

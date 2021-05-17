@@ -79,6 +79,7 @@ class Firma{
 public class AB03 {
     public static void main(String[] args) {
         Person[] angestellte = new Person[4];
+
         angestellte[0] = new Chef("chef", "chefchef", 1, 53, "firma");
         angestellte[1] = new Fachangestellter("f1", "f1", 2, 25, (Chef) angestellte[0]);
         angestellte[2] = new Fachangestellter("f2", "f2", 3, 62, (Chef) angestellte[0]);

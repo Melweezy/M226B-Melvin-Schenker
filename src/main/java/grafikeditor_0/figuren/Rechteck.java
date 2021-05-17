@@ -42,6 +42,7 @@ public class Rechteck extends Figur {
 
 	@Override
 	public void zeichnen(Graphics g){
+		g.setColor(Color.GREEN);
 		g.drawRect(getX(), getY(), breite, hoehe);
 	}
 }
