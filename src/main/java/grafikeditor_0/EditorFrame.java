@@ -1,23 +1,21 @@
 package grafikeditor_0;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 final class EditorFrame extends JFrame {
-    private EditorControl editorControl = new EditorControl();
+    private final EditorControl editorControl = new EditorControl();
 
     public EditorFrame(int breite, int hoehe) {
         erzeugeUndSetzeEditorPanel();
         fensterEinmitten(breite, hoehe);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+
+        //Listener für Tastatureingabe
         addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -28,6 +26,29 @@ final class EditorFrame extends JFrame {
 
     private void erzeugeUndSetzeEditorPanel() {
         JPanel panel = new EditorPanel(editorControl);
+        Button colorChooserBtn = new Button("Farbe");
+        Button rechteckBtn = new Button("Rechteck");
+        Button kreisBtn = new Button("Kreis");
+        Button linieBtn = new Button("Linie");
+        Button dreieckBtn = new Button("Dreieck");
+        panel.add(colorChooserBtn);
+        panel.add(rechteckBtn);
+        panel.add(kreisBtn);
+        panel.add(linieBtn);
+        panel.add(dreieckBtn);
+
+        rechteckBtn.addActionListener(e -> editorControl.setFigurTyp('r'));
+        kreisBtn.addActionListener(e -> editorControl.setFigurTyp('k'));
+        linieBtn.addActionListener(e -> editorControl.setFigurTyp('l'));
+        dreieckBtn.addActionListener(e -> editorControl.setFigurTyp('d'));
+
+        colorChooserBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JColorChooser colorChooser = new JColorChooser();
+                Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+            }
+        });
         setContentPane(panel);
     }
 

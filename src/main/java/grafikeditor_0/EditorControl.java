@@ -32,6 +32,7 @@ final class EditorControl {
     }
 
     public void erzeugeFigurMitZweitemPunkt(Point zweiterPunkt) {
+
         if(this.figurTyp == 'r'){
             Grafikeditor.figuren.add(new Rechteck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x , zweiterPunkt.y - ersterPunkt.y));
         }
@@ -44,7 +45,6 @@ final class EditorControl {
         if(this.figurTyp == 'd'){
             Grafikeditor.figuren.add(new Dreieck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, ersterPunkt.x - (zweiterPunkt.x - ersterPunkt.x), zweiterPunkt.y));
         }
-
         Grafikeditor.frame.repaint();
     }
 }

@@ -13,7 +13,7 @@ public class Dreieck extends Figur {
     }
 
     public void zeichnen(Graphics g){
-        g.setColor(Color.RED);
+        g.setColor(Color.GREEN);
         g.drawPolygon(xKoordinaten, yKoordinaten, 3);
     }
 }
