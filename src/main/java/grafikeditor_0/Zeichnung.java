@@ -3,21 +3,39 @@ package grafikeditor_0;
 import grafikeditor_0.figuren.Figur;
 
 import java.awt.*;
+import java.util.List;
 
 public class Zeichnung {
-    private Figur[] figuren;
+    private List<Figur> figuren;
 
-    public Zeichnung(Figur[] figuren){
+    public Zeichnung(List<Figur> figuren) {
         this.figuren = figuren;
     }
 
-    public void zeichneFiguren(Figur[] figuren, Graphics g){
-        for(Figur f : figuren){
-            f.zeichnen(g);
+    /**
+     * Zeichnet alle Figuren.
+     *
+     * @param g Referenz auf das Graphics-Objekt zum zeichnen.
+     */
+    public void zeichneFiguren(Graphics g) {
+        for (Figur figur : figuren) {
+            figur.zeichnen(g);
         }
     }
 
-    public Figur[] getFiguren(){
-        return figuren;
+    /**
+     * Fügt eine weitere Figur hinzu und löst die Auffrischung des Fensterinhaltes aus.
+     *
+     * @param figur Referenz auf das weitere Figur-Objekt.
+     */
+    public void hinzufuegen(Figur figur) {
+        figuren.add(figur);
+    }
+
+    /**
+     * Löscht alle Figuren und löst die Auffrischung des Fensterinhaltes aus.
+     */
+    public void allesLoeschen() {
+        figuren.clear();
     }
 }

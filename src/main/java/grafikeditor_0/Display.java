@@ -46,7 +46,7 @@ public class Display extends JFrame {
       @Override
       protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        zeichnung.zeichneFiguren(zeichnung.getFiguren(),g);
+        zeichnung.zeichneFiguren(g);
       }
     });
   }

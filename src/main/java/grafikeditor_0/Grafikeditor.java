@@ -1,29 +1,28 @@
 package grafikeditor_0;
 
 import grafikeditor_0.figuren.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.awt.*;
 
 public class Grafikeditor {
-    private static final Display display = new Display();
+    public static List<Figur> figuren = new ArrayList<>();
+    @SuppressWarnings("unused")
+    public static EditorFrame frame = new EditorFrame(800, 600);
 
-    public static void main(String[] args) {
-        Rechteck r1 = new Rechteck(300, 400, 100,100);
-        Linie l1 = new Linie(0, 0, 300, 400);
-        Kreis k1 = new Kreis(300, 0, 200);
-        Kreis k2 = new Kreis(600, 300, 300);
-        Dreieck d1 = new Dreieck(200,200,400,200,325, 350);
+    public static void main(String[] args) { new Grafikeditor(); }
 
-
-
-
-
-        Figur[] figuren = new Figur[]{r1, l1, k1, k2, d1};
+    private Grafikeditor() {
+        figuren.add(new Rechteck(240, 220, 50, 40));
+        figuren.add(new Linie(500, 300, 100, 50));
+        figuren.add(new Rechteck(120, 120, 200, 300));
+        figuren.add(new Kreis(300, 300, 100));
 
         Zeichnung zeichnung = new Zeichnung(figuren);
-        display.setZeichnung(zeichnung);
 
-//        r1.move(50,50);
-//        l1.move(10,10);
+        frame.setZeichnungInControl(zeichnung);
+
+        frame.repaint();
     }
 }
