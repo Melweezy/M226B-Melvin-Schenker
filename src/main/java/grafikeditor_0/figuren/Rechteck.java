@@ -1,5 +1,7 @@
 package grafikeditor_0.figuren;
 
+import grafikeditor_0.EditorFrame;
+
 import java.awt.*;
 
 public class Rechteck extends Figur {
@@ -42,7 +44,7 @@ public class Rechteck extends Figur {
 
 	@Override
 	public void zeichnen(Graphics g){
-		g.setColor(Color.GREEN);
+		g.setColor(EditorFrame.getColor());
 		g.drawRect(getX(), getY(), breite, hoehe);
 	}
 }

@@ -1,5 +1,7 @@
 package grafikeditor_0.figuren;
 
+import grafikeditor_0.EditorFrame;
+
 import java.awt.*;
 
 public class Dreieck extends Figur {
@@ -13,7 +15,7 @@ public class Dreieck extends Figur {
     }
 
     public void zeichnen(Graphics g){
-        g.setColor(Color.GREEN);
+        g.setColor(EditorFrame.getColor());
         g.drawPolygon(xKoordinaten, yKoordinaten, 3);
     }
 }

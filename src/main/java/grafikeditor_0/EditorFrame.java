@@ -4,9 +4,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
-final class EditorFrame extends JFrame {
+final public class EditorFrame extends JFrame {
+    private static Color color;
     private final EditorControl editorControl = new EditorControl();
 
     public EditorFrame(int breite, int hoehe) {
@@ -26,16 +31,24 @@ final class EditorFrame extends JFrame {
 
     private void erzeugeUndSetzeEditorPanel() {
         JPanel panel = new EditorPanel(editorControl);
+
         Button colorChooserBtn = new Button("Farbe");
         Button rechteckBtn = new Button("Rechteck");
         Button kreisBtn = new Button("Kreis");
         Button linieBtn = new Button("Linie");
         Button dreieckBtn = new Button("Dreieck");
+
         panel.add(colorChooserBtn);
         panel.add(rechteckBtn);
         panel.add(kreisBtn);
         panel.add(linieBtn);
         panel.add(dreieckBtn);
+
+        colorChooserBtn.setFocusable(false);
+        rechteckBtn.setFocusable(false);
+        kreisBtn.setFocusable(false);
+        linieBtn.setFocusable(false);
+        dreieckBtn.setFocusable(false);
 
         rechteckBtn.addActionListener(e -> editorControl.setFigurTyp('r'));
         kreisBtn.addActionListener(e -> editorControl.setFigurTyp('k'));
@@ -46,10 +59,14 @@ final class EditorFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JColorChooser colorChooser = new JColorChooser();
-                Color color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+                color = JColorChooser.showDialog(null, "Pick a color", Color.black);
             }
         });
         setContentPane(panel);
+    }
+
+    public static Color getColor(){
+        return color;
     }
 
     private void fensterEinmitten(int breite, int hoehe) {

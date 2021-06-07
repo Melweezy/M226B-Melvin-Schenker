@@ -33,17 +33,11 @@ final class EditorControl {
 
     public void erzeugeFigurMitZweitemPunkt(Point zweiterPunkt) {
 
-        if(this.figurTyp == 'r'){
-            Grafikeditor.figuren.add(new Rechteck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x , zweiterPunkt.y - ersterPunkt.y));
-        }
-        if(this.figurTyp == 'k'){
-            Grafikeditor.figuren.add(new Kreis(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x));
-        }
-        if(this.figurTyp == 'l'){
-            Grafikeditor.figuren.add(new Linie(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y));
-        }
-        if(this.figurTyp == 'd'){
-            Grafikeditor.figuren.add(new Dreieck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, ersterPunkt.x - (zweiterPunkt.x - ersterPunkt.x), zweiterPunkt.y));
+        switch (this.figurTyp) {
+            case 'r' -> Grafikeditor.figuren.add(new Rechteck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x, zweiterPunkt.y - ersterPunkt.y));
+            case 'k' -> Grafikeditor.figuren.add(new Kreis(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x));
+            case 'l' -> Grafikeditor.figuren.add(new Linie(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y));
+            case 'd' -> Grafikeditor.figuren.add(new Dreieck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, ersterPunkt.x - (zweiterPunkt.x - ersterPunkt.x), zweiterPunkt.y));
         }
         Grafikeditor.frame.repaint();
     }

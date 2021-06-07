@@ -1,5 +1,7 @@
 package grafikeditor_0.figuren;
 
+import grafikeditor_0.EditorFrame;
+
 import java.awt.*;
 
 public class Linie extends Figur {
@@ -36,7 +38,7 @@ public class Linie extends Figur {
 
     @Override
     public void zeichnen(Graphics g) {
-        g.setColor(Color.MAGENTA);
+        g.setColor(EditorFrame.getColor());
         g.drawLine(getX(), getY(), getendX(),getendY());
     }
 }

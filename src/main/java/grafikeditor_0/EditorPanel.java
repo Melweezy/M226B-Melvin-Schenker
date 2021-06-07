@@ -6,12 +6,16 @@ import java.awt.event.*;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-final class EditorPanel extends JPanel{
+final class EditorPanel extends JPanel implements MouseMotionListener{
+    private static int mouseX = 0;
+    private static int mouseY = 0;
     private EditorControl editorControl;
 
-    EditorPanel(EditorControl control) {
+    public EditorPanel(EditorControl control) {
         editorControl = control;
-        addMouseListener(new MouseAdapter(){
+        addMouseMotionListener(this);
+
+        addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 editorControl.setErsterPunkt(e.getPoint());
@@ -30,5 +34,17 @@ final class EditorPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         editorControl.allesNeuZeichnen(g);
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        mouseX = e.getX();
+        mouseY = e.getY();
+        System.out.println(mouseX + " " + mouseY);
     }
 }

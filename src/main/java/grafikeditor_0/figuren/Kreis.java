@@ -1,5 +1,7 @@
 package grafikeditor_0.figuren;
 
+import grafikeditor_0.EditorFrame;
+
 import java.awt.*;
 
 public class Kreis extends Figur {
@@ -25,7 +27,7 @@ public class Kreis extends Figur {
 
     @Override
     public void zeichnen(Graphics g){
-        g.setColor(Color.BLUE);
+        g.setColor(EditorFrame.getColor());
         g.drawOval( getX() - getradius()/2, getY() - getradius()/2, getradius(), getradius());
     }
 }
