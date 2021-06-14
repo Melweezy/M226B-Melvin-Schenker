@@ -14,11 +14,21 @@ public class Rechteck extends Figur {
 		this.setHoehe(hoehe);
 	}
 
-	public Rechteck(int x, int y, int breite, int hoehe, Color farbe, boolean ausgefuellt) {
+	public Rechteck(int x, int y, int breite, int hoehe, Color color) {
 		super(x, y);
 		this.setBreite(breite);
 		this.setHoehe(hoehe);
+		this.setColor(color);
 	}
+
+	public Rechteck(int x, int y, int breite, int hoehe, Color color, char fillType) {
+		super(x, y);
+		this.setBreite(breite);
+		this.setHoehe(hoehe);
+		this.setColor(color);
+		this.setFillType(fillType);
+	}
+
 
 	public int getBreite() {
 		return breite;
@@ -44,7 +54,11 @@ public class Rechteck extends Figur {
 
 	@Override
 	public void zeichnen(Graphics g){
-		g.setColor(EditorFrame.getColor());
-		g.drawRect(getX(), getY(), breite, hoehe);
+		g.setColor(color);
+		if(fillType == 'f'){
+			g.fillRect(getX(), getY(), breite, hoehe);
+		} else {
+			g.drawRect(getX(), getY(), breite, hoehe);
+		}
 	}
 }

@@ -8,10 +8,11 @@ public class Linie extends Figur {
     private int endX;
     private int endY;
 
-    public Linie(int x, int y, int endX, int endY) {
+    public Linie(int x, int y, int endX, int endY, Color color) {
         super(x, y);
         this.setendX(endX);
         this.setendY(endY);
+        this.setColor(color);
     }
     public int getendX() {
         return endX;
@@ -38,7 +39,7 @@ public class Linie extends Figur {
 
     @Override
     public void zeichnen(Graphics g) {
-        g.setColor(EditorFrame.getColor());
+        g.setColor(color);
         g.drawLine(getX(), getY(), getendX(),getendY());
     }
 }

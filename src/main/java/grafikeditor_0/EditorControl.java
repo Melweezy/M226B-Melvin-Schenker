@@ -13,7 +13,10 @@ import java.awt.Point;
 final class EditorControl {
     private Zeichnung zeichnung;
     private char figurTyp;
+    private char fillType;
     private Point ersterPunkt;
+    private Color selectedColor = Color.black;
+    private char selectedFillType;
 
     public void allesNeuZeichnen(Graphics g) {
         zeichnung.zeichneFiguren(g);
@@ -27,6 +30,10 @@ final class EditorControl {
         this.figurTyp = figurTyp;
     }
 
+    public void setFillType(char fillType){
+        this.fillType = fillType;
+    }
+
     public void setErsterPunkt(Point ersterPunkt) {
         this.ersterPunkt = ersterPunkt;
     }
@@ -34,11 +41,19 @@ final class EditorControl {
     public void erzeugeFigurMitZweitemPunkt(Point zweiterPunkt) {
 
         switch (this.figurTyp) {
-            case 'r' -> Grafikeditor.figuren.add(new Rechteck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x, zweiterPunkt.y - ersterPunkt.y));
-            case 'k' -> Grafikeditor.figuren.add(new Kreis(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x));
-            case 'l' -> Grafikeditor.figuren.add(new Linie(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y));
-            case 'd' -> Grafikeditor.figuren.add(new Dreieck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, ersterPunkt.x - (zweiterPunkt.x - ersterPunkt.x), zweiterPunkt.y));
+            case 'r' -> Grafikeditor.figuren.add(new Rechteck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x, zweiterPunkt.y - ersterPunkt.y, selectedColor, fillType));
+            case 'k' -> Grafikeditor.figuren.add(new Kreis(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x - ersterPunkt.x, selectedColor, fillType));
+            case 'l' -> Grafikeditor.figuren.add(new Linie(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, selectedColor));
+            case 'd' -> Grafikeditor.figuren.add(new Dreieck(ersterPunkt.x, ersterPunkt.y, zweiterPunkt.x, zweiterPunkt.y, ersterPunkt.x - (zweiterPunkt.x - ersterPunkt.x), zweiterPunkt.y, selectedColor, fillType));
         }
         Grafikeditor.frame.repaint();
     }
+    public void selectedColor(Color selectedColor){
+        this.selectedColor = selectedColor;
+    }
+
+    public void allesLoeschen() {
+        zeichnung.allesLoeschen();
+    }
+
 }

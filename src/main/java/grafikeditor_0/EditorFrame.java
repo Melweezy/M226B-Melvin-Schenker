@@ -13,6 +13,7 @@ import javax.swing.border.LineBorder;
 final public class EditorFrame extends JFrame {
     private static Color color;
     private final EditorControl editorControl = new EditorControl();
+    private boolean isFilled = false;
 
     public EditorFrame(int breite, int hoehe) {
         erzeugeUndSetzeEditorPanel();
@@ -25,6 +26,7 @@ final public class EditorFrame extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 editorControl.setFigurTyp(e.getKeyChar());
+                editorControl.setFillType(e.getKeyChar());
             }
         });
     }
@@ -37,29 +39,51 @@ final public class EditorFrame extends JFrame {
         Button kreisBtn = new Button("Kreis");
         Button linieBtn = new Button("Linie");
         Button dreieckBtn = new Button("Dreieck");
+        Button fillBtn = new Button("gefuellt (ein/aus)");
+        Button deleteBtn = new Button("Neu");
 
         panel.add(colorChooserBtn);
         panel.add(rechteckBtn);
         panel.add(kreisBtn);
         panel.add(linieBtn);
         panel.add(dreieckBtn);
+        panel.add(fillBtn);
+        panel.add(deleteBtn);
 
         colorChooserBtn.setFocusable(false);
         rechteckBtn.setFocusable(false);
         kreisBtn.setFocusable(false);
         linieBtn.setFocusable(false);
         dreieckBtn.setFocusable(false);
+        fillBtn.setFocusable(false);
+        deleteBtn.setFocusable(false);
 
         rechteckBtn.addActionListener(e -> editorControl.setFigurTyp('r'));
         kreisBtn.addActionListener(e -> editorControl.setFigurTyp('k'));
         linieBtn.addActionListener(e -> editorControl.setFigurTyp('l'));
         dreieckBtn.addActionListener(e -> editorControl.setFigurTyp('d'));
 
+        fillBtn.addActionListener(e -> {
+               if(isFilled) {
+                   editorControl.setFillType('n');
+                   isFilled = false;
+               } else  {
+                   editorControl.setFillType('f');
+                   isFilled = true;
+               }
+        });
+
+        deleteBtn.addActionListener(e -> {
+            editorControl.allesLoeschen();
+            repaint();
+        });
+
         colorChooserBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JColorChooser colorChooser = new JColorChooser();
+//                JColorChooser colorChooser = new JColorChooser();
                 color = JColorChooser.showDialog(null, "Pick a color", Color.black);
+                editorControl.selectedColor(color);
             }
         });
         setContentPane(panel);
