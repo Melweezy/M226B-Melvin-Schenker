@@ -14,6 +14,13 @@ public class Linie extends Figur {
         this.setendY(endY);
         this.setColor(color);
     }
+
+    public Linie(int x, int y, int endX, int endY) {
+        super(x, y);
+        this.setendX(endX);
+        this.setendY(endY);
+    }
+
     public int getendX() {
         return endX;
     }

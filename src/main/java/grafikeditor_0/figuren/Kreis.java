@@ -20,6 +20,13 @@ public class Kreis extends Figur {
         this.setFillType(fillType);
     }
 
+    public Kreis(int x, int y, int radius){
+        super(x,y);
+        this.setradius(radius);
+        this.setColor(color);
+        this.setFillType(fillType);
+    }
+
     public int getradius(){
         return radius;
     }
