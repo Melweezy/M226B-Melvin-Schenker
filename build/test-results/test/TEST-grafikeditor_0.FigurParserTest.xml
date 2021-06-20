@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="grafikeditor_0.FigurParserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-20T13:25:46" hostname="MININT-V3P9JTV" time="0.019">
+  <properties/>
+  <testcase name="test()" classname="grafikeditor_0.FigurParserTest" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

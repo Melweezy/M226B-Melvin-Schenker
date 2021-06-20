@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class Kreis extends Figur {
     private int radius;
+    private int radius1;
+    private int radius2;
 
     public Kreis(int x, int y, int radius, Color color){
         super(x,y);
@@ -16,6 +18,14 @@ public class Kreis extends Figur {
     public Kreis(int x, int y, int radius, Color color, char fillType){
         super(x,y);
         this.setradius(radius);
+        this.setColor(color);
+        this.setFillType(fillType);
+    }
+
+    public Kreis(int x, int y, int radius1, int radius2){
+        super(x,y);
+        this.setradius(radius1);
+        this.setradius(radius2);
         this.setColor(color);
         this.setFillType(fillType);
     }

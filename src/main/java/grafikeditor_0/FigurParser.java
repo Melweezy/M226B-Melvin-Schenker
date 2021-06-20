@@ -4,13 +4,14 @@ import grafikeditor_0.figuren.Figur;
 import grafikeditor_0.figuren.Kreis;
 import grafikeditor_0.figuren.Linie;
 import grafikeditor_0.figuren.Rechteck;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FigurParser {
-  private FigurFileDAO dao;
+  private FigurDAO dao;
 
-  public FigurParser(FigurFileDAO dao) {
+  public FigurParser(FigurDAO dao) {
     this.dao = dao;
   }
 
@@ -19,23 +20,23 @@ public class FigurParser {
     String[] figurData = dao.readNextFigurData();
     while (figurData != null) {
       String figurTyp = figurData[0];
-      int x = Integer.parseInt(figurData[1]);
-      int y = Integer.parseInt(figurData[2]);
+      int x = Integer.valueOf(figurData[1]);
+      int y = Integer.valueOf(figurData[2]);
       switch (figurTyp) {
-      case "Rechteck":
-        int breite = Integer.parseInt(figurData[3]);
-        int hoehe = Integer.parseInt(figurData[4]);
-        figuren.add(new Rechteck(x, y, breite, hoehe));
-        break;
-      case "Kreis":
-        int radius = Integer.parseInt(figurData[3]);
-        figuren.add(new Kreis(x, y, radius));
-        break;
-      case "Linie":
-        int endx = Integer.parseInt(figurData[3]);
-        int endy = Integer.parseInt(figurData[4]);
-        figuren.add(new Linie(x, y, endx, endy));
-        break;
+        case "Rechteck":
+          int breite = Integer.valueOf(figurData[3]);
+          int hoehe = Integer.valueOf(figurData[4]);
+          figuren.add(new Rechteck(x, y, hoehe, breite));
+          break;
+        case "Kreis":
+          int radius = Integer.valueOf(figurData[3]);
+          figuren.add(new Kreis(x, y, radius));
+          break;
+        case "Linie":
+          int endx = Integer.valueOf(figurData[3]);
+          int endy = Integer.valueOf(figurData[4]);
+          figuren.add(new Linie(x, y, endx, endy));
+          break;
       }
       figurData = dao.readNextFigurData();
     }

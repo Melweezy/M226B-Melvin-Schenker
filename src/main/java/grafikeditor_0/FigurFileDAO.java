@@ -1,5 +1,4 @@
 package grafikeditor_0;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 
-public class FigurFileDAO {
+public class FigurFileDAO implements FigurDAO {
   private BufferedReader in;
 
   public FigurFileDAO() {
@@ -27,7 +26,7 @@ public class FigurFileDAO {
     if (in != null) {
       try {
         String line = in.readLine();
-        if (line != null && !line.isEmpty()) 
+        if (line != null && !line.isEmpty())
           return line.split("\\s");
       } catch (IOException e) {
         e.printStackTrace();
@@ -35,7 +34,7 @@ public class FigurFileDAO {
     }
     return null;
   }
-  
+
   public void close() {
     if (in != null) {
       try {

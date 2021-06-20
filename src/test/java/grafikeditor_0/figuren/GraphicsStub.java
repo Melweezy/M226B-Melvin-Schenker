@@ -8,6 +8,7 @@ public class GraphicsStub extends ConcreteGraphics {
     int y;
     int width;
     int height;
+
     @Override
     public void drawRect(int x, int y, int width, int height) {
         nbOfDrawRectCalls++;

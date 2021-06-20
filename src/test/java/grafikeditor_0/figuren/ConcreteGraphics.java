@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.text.AttributedCharacterIterator;
 
-public class ConcreteGraphics extends Graphics {
+public abstract class ConcreteGraphics extends Graphics {
     @Override
     public Graphics create() {
         return null;
