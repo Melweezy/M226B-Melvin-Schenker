@@ -3,10 +3,8 @@ package grafikeditor_0;
 import grafikeditor_0.figuren.Figur;
 import grafikeditor_0.figuren.Kreis;
 import grafikeditor_0.figuren.Rechteck;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
