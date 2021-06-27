@@ -1,18 +1,20 @@
 package grafikeditor_0.figuren;
 
-import grafikeditor_0.figuren.Rechteck;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-
 import java.awt.*;
 
-public class RechteckTestMock {
+class RechteckTestMock {
 
+    //Mock-Objekt erzeugen
     private Graphics g = Mockito.mock(Graphics.class);
 
-    @org.junit.Test
-    public void draw() {
-        Rechteck r = new Rechteck(10,10,20,40);
-        r.draw(g);
-        Mockito.verify(g, Mockito.times(1)).drawRect(10,10,20,40);
+    @Test
+    void zeichnen() {
+        Rechteck r = new Rechteck(10, 10, 20, 40);
+        r.zeichnen(g);
+        //Überprüft wie oft drawRect ausgeführt wird
+        Mockito.verify(g, Mockito.times(2)).drawRect(10, 10, 20, 40);
     }
 }
