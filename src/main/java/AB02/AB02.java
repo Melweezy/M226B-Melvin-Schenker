@@ -15,9 +15,9 @@ public class AB02 {
 }
 
 class Person{
-    public String name;
-    public String vorname;
-    public int id;
+    protected String name;
+    protected String vorname;
+    protected int id;
 
     public Person(String name, String vorname, int id){
         this.name = name;
@@ -27,7 +27,7 @@ class Person{
 }
 
 class Chef extends Person{
-    public String abteilung;
+    protected String abteilung;
     public Chef(String name, String vorname, int id, String abteilung){
         super(name,vorname,id);
         this.abteilung = abteilung;
@@ -35,7 +35,7 @@ class Chef extends Person{
 }
 
 class Fachangestellter extends Person{
-    public Chef vorgesetzter;
+    protected Chef vorgesetzter;
     public Fachangestellter(String name, String vorname, int id, Chef vorgesetzter){
         super(name,vorname,id);
         this.vorgesetzter = vorgesetzter;
@@ -43,7 +43,7 @@ class Fachangestellter extends Person{
 }
 
 class Lernende extends Person{
-    public int lehrjahr;
+    protected int lehrjahr;
     public Lernende(String name, String vorname, int id, int lehrjahr){
         super(name,vorname,id);
         this.lehrjahr = lehrjahr;
@@ -51,7 +51,7 @@ class Lernende extends Person{
 }
 
 class Firma{
-    public Person[] mitarbeiter;
+    protected Person[] mitarbeiter;
     public Firma(Person[] mitarbeiter){
         this.mitarbeiter = mitarbeiter;
     }
