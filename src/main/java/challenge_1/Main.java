@@ -12,8 +12,7 @@ public class Main {
         // Was läuft hier falsch?
         // Zeige auf, was hier korrigiert werden muss, so dass die zwei Punkte richtig verglichen werden
         // Diese Methode soll nicht verändert werden!
-        boolean blabla = p1.equals(p2);
-        System.out.println(blabla);
+        System.out.println(p1.equals(p2));
     }
 
     public static void compare2(ColoredPoint p1, ColoredPoint p2){
